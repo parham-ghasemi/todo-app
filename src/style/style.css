@@ -1,3 +1,18 @@
+:root {
+  --primary-color: #d4e2d9;
+  --bg-color: #CBA35C;
+  --dark-color: #754E1A;
+  --light-color: #fff0d5;
+}
+
+@font-face {
+  font-family: 'Playwrite';
+  src: url('../fonts/PlaywriteITModerna-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OoohBaby';
+  src: url('../fonts/OoohBaby-Regular.ttf') format('truetype');
+}
 
 * {
   margin: 0;
@@ -5,7 +20,56 @@
   box-sizing: border-box;
 }
 
-.bg-black {
-  background-color: black;
-  color: white;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 70px;
+  gap: 20px;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  font-family: "Playwrite";
+  font-weight: 300;
+  font-size: 1.9rem;
+}
+
+.text-font {
+  font-family: 'OoohBaby';
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.bg {
+  background-color: var(--bg-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-light {
+  color: var(--light-color);
+}
+
+.text-dark {
+  color: var(--dark-color);
+}
+
+.bg-primary {
+  color: var(--primary-color);
+}
+
+.bg-light {
+  color: var(--light-color);
+}
+
+.bg-dark {
+  color: var(--dark-color);
 }
