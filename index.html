@@ -15,6 +15,64 @@
     <link rel="stylesheet" href="src/style/style.css" />
   </head>
   <body class="text-primary bg">
+    <div id="window-controls">
+      <button id="minimize">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 12h12" />
+        </svg>
+      </button>
+      <button id="maximize">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <rect
+            x="5"
+            y="5"
+            width="14"
+            height="14"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            rx="2"
+            ry="2"
+          />
+        </svg>
+      </button>
+      <button id="close">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
     <h1 class="header text-light">My Todo List</h1>
     <main>
       <div class="add-task-container">
@@ -47,7 +105,7 @@
         </ul>
       </div>
     </main>
-    
+
     <script src="dist/app/app.js"></script>
   </body>
 </html>

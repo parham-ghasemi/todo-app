@@ -1,3 +1,17 @@
+document.getElementById('minimize')?.addEventListener('click', () => {
+  window.electron.minimizeWindow();
+});
+
+document.getElementById('maximize')?.addEventListener('click', () => {
+  window.electron.maximizeWindow();
+});
+
+document.getElementById('close')?.addEventListener('click', () => {
+  window.electron.closeWindow();
+});
+
+
+
 const tasksList = document.getElementById('tasks-list') as HTMLUListElement;
 
 // Function to render tasks in the list

@@ -8,12 +8,29 @@ const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, '../dist/preload.js')
     }
   })
 
   win.loadFile('index.html')
+  // Listen for window control requests from renderer process
+  ipcMain.on('minimize-window', () => {
+    win.minimize();
+  });
+
+  ipcMain.on('maximize-window', () => {
+    if (win.isMaximized()) {
+      win.unmaximize();
+    } else {
+      win.maximize();
+    }
+  });
+
+  ipcMain.on('close-window', () => {
+    win.close();
+  });
 }
 
 app.whenReady().then(() => {
