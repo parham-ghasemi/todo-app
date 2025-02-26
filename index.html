@@ -17,13 +17,37 @@
   <body class="text-primary bg">
     <h1 class="header text-light">My Todo List</h1>
     <main>
-      <p class="text-font">testing the font</p>
+      <div class="add-task-container">
+        <form id="task-form" class="task-form">
+          <input
+            type="text"
+            id="task-input"
+            class="task-input"
+            placeholder="Enter your task here"
+            required
+          />
+          <button type="submit" id="add-task-button" class="add-task-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path
+                d="M12 2C11.4477 2 11 2.4477 11 3V10H4C3.4477 10 3 10.4477 3 11C3 11.5523 3.4477 12 4 12H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V12H20C20.5523 12 21 11.5523 21 11C21 10.4477 20.5523 10 20 10H13V3C13 2.4477 12.5523 2 12 2Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+      <div class="tasks-container">
+        <ul id="tasks-list" class="tasks-list">
+          <li class="text-font">testing li</li>
+        </ul>
+      </div>
     </main>
-
-    <button id="add-todo">Add Todo</button>
-    <button id="get-todos">Get Todos</button>
-    <button id="toggle-todo">Toggle Todo</button>
-
+    
     <script src="dist/app/app.js"></script>
   </body>
 </html>
