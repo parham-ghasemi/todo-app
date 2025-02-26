@@ -3,6 +3,7 @@
   --bg-color: #CBA35C;
   --dark-color: #754E1A;
   --light-color: #fff0d5;
+  --black-color: #3c260a;
 }
 
 @font-face {
@@ -26,7 +27,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 30px 70px;
+  padding-bottom: 25px;
   gap: 20px;
 }
 
@@ -35,6 +36,9 @@ body {
   font-weight: 300;
   padding: 10px 0;
   font-size: 2.3rem;
+}
+.header#main-header {
+  margin-top: 54px;
 }
 
 main {
@@ -151,6 +155,7 @@ main {
   flex-direction: column;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .tasks-list li {
@@ -159,13 +164,16 @@ main {
   justify-content: space-between;
   position: relative;
   padding: 10px;
+  width: 100%;
 }
 
 .task-content {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   position: relative;
   width: fit-content;
+  overflow-wrap: anywhere;
 }
 
 .complete-line {
@@ -217,7 +225,7 @@ main {
 
 .delete-btn:hover .trashcan-icon {
   fill: #ff4d4d;
-  color: black;
+  color: var(--black-color);
   /* You can change the hover color to a red tone */
 }
 
@@ -226,10 +234,15 @@ main {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 80px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  padding: 10px 10px 10px 0;
+  width: 100vw;
+  backdrop-filter: blur(7px);
+  border-radius: 10px 0;
+  background-color: #fff0d53d;
+  z-index: 999;
 }
 
 #window-controls button {
@@ -279,9 +292,9 @@ main {
 
 /* Customize the scrollbar container */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
   /* width of the scrollbar */
-  height: 12px;
+  height: 9px;
   /* height of the horizontal scrollbar */
 }
 
