@@ -154,9 +154,17 @@ main {
 
 .tasks-list li {
   cursor: pointer;
-  width: fit-content;
+  display: flex;
+  justify-content: space-between;
   position: relative;
   padding: 10px;
+}
+
+.task-content {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: fit-content;
 }
 
 .complete-line {
@@ -183,6 +191,36 @@ main {
     width: 100%;
   }
 }
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  opacity: 0.8;
+}
+
+.trashcan-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--light-color);
+  transition: fill 0.3s ease;
+}
+
+.delete-btn:hover .trashcan-icon {
+  fill: #ff4d4d;
+  color: black;
+  /* You can change the hover color to a red tone */
+}
+
+
 
 /* Customize the scrollbar container */
 ::-webkit-scrollbar {

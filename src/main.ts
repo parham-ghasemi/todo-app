@@ -65,6 +65,11 @@ const toggleTodoCompletion = async (id: number) => {
   await db.run('UPDATE todos SET completed = NOT completed WHERE id = ?', [id]);
 };
 
+const deleteTodo = async (id: number) => {
+  const db = await dbPromise;
+  await db.run('DELETE FROM todos WHERE id = ?', [id]);
+};
+
 ipcMain.handle('get-todos', async () => {
   return await getTodos();
 });
@@ -75,4 +80,8 @@ ipcMain.handle('add-todo', async (_, task: string) => {
 
 ipcMain.handle('toggle-todo', async (_, id: number) => {
   await toggleTodoCompletion(id);
+});
+
+ipcMain.handle('delete-todo', async (_, id: number) => {
+  await deleteTodo(id);
 });

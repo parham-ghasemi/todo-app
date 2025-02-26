@@ -7,18 +7,32 @@ const renderTasks = async () => {
     tasksList.innerHTML = ''; // Clear current tasks
     todos.forEach((task: { id: number; task: string; completed: boolean }) => {
       const taskItem = document.createElement('li');
+      const taskText = document.createElement('div');
+      taskText.classList.add('task-content')
       taskItem.classList.add('text-font');
-      taskItem.textContent = task.task; // Set the task text
+      taskText.innerHTML = `<p>${task.task}</p>`; // Set the task text
 
       // If the task is completed, add the completion line
       if (task.completed) {
         const line = document.createElement('div');
         line.classList.add('complete-line'); // Corrected class name
-        taskItem.classList.add('completed'); // Add completed class for strike-through
-        taskItem.appendChild(line); // Append the line element
+        taskText.classList.add('completed'); // Add completed class for strike-through
+        taskText.appendChild(line); // Append the line element
       }
 
-      taskItem.addEventListener('click', () => toggleTaskCompletion(task.id, taskItem));
+      // Create a delete button
+      const deleteBtn = document.createElement('button');
+      deleteBtn.classList.add('delete-btn');
+      deleteBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trashcan-icon"><path d="M3 6h18M19 6l-1 14H6L5 6M10 6V4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2M10 11h4M12 6h0"></path></svg>`
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent the click event from triggering task completion toggle
+        deleteTask(task.id, taskItem);
+      });
+
+      taskItem.appendChild(taskText);
+      taskItem.appendChild(deleteBtn); // Append delete button to the task
+
+      taskItem.addEventListener('click', () => toggleTaskCompletion(task.id, taskText));
 
       tasksList.appendChild(taskItem);
     });
@@ -30,7 +44,7 @@ const renderTasks = async () => {
 document.addEventListener('DOMContentLoaded', renderTasks);
 
 // Function to toggle the completion of a task
-const toggleTaskCompletion = async (taskId: number, taskElement: HTMLLIElement) => {
+const toggleTaskCompletion = async (taskId: number, taskElement: HTMLDivElement) => {
   try {
     await window.electron.toggleTodo(taskId); // Toggle the task completion in DB
 
@@ -51,6 +65,17 @@ const toggleTaskCompletion = async (taskId: number, taskElement: HTMLLIElement) 
     console.error('Error toggling task completion:', error);
   }
 };
+
+// Function to delete a task
+const deleteTask = async (taskId: number, taskElement: HTMLLIElement) => {
+  try {
+    await window.electron.deleteTodo(taskId); // Call the Electron function to delete the task
+    taskElement.remove(); // Remove the task from the DOM
+  } catch (error) {
+    console.error('Error deleting task:', error);
+  }
+};
+
 
 
 

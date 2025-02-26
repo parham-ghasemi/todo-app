@@ -5,9 +5,10 @@ declare global {
       getTodos: () => Promise<any[]>;
       addTodo: (task: string) => Promise<void>;
       toggleTodo: (id: number) => Promise<void>;
+      deleteTodo: (id: number) => Promise<void>;
     };
   }
 }
 
 // Ensure this file is treated as a global type declaration
-export {};
+export { };
