@@ -10,11 +10,14 @@ const createWindow = () => {
     height: 600,
     frame: false,
     webPreferences: {
-      preload: path.join(__dirname, '../dist/preload.js')
+      preload: path.join(__dirname, 'preload.js')
     }
   })
 
-  win.loadFile('index.html')
+  // Load the index.html from the root directory
+  win.loadFile(path.join(__dirname,'..' ,'index.html'))
+    .catch(err => console.error('Error loading the app:', err));
+
   // Listen for window control requests from renderer process
   ipcMain.on('minimize-window', () => {
     win.minimize();
