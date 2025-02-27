@@ -37,6 +37,7 @@ body {
   padding: 10px 0;
   font-size: 2.3rem;
 }
+
 .header#main-header {
   margin-top: 54px;
 }
@@ -83,6 +84,75 @@ main {
 
 .bg-dark {
   color: var(--dark-color);
+}
+
+.d-none {
+  display: none !important;
+}
+
+.edit-window-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(7px);
+  background-color: #fff0d53c;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-task-form {
+  background-color: var(--bg-color);
+  height: 300px;
+  width: 400px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.edit-task-form input {
+  height: 50px;
+  width: 100%;
+  padding: 0 10px;
+  font-size: 1.5rem;
+  font-family: 'OoohBaby';
+  font-weight: 700;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  outline: none;
+  transition: all 0.3s ease;
+}
+.edit-task-form input:focus {
+  border-color: var(--dark-color);
+  box-shadow: 0 0 5px var(--dark-color);
+}
+
+.edit-task-form button {
+  height: 50px;
+  width: 50%;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-family: "Playwrite";
+  font-weight: 700;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.edit-task-form button:hover {
+  border-color: var(--dark-color);
+  box-shadow: 0 0 5px var(--dark-color);
 }
 
 .add-task-container {
@@ -201,6 +271,13 @@ main {
   }
 }
 
+.task-buttons {
+  width: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .delete-btn {
   background: none;
   border: none;
@@ -225,6 +302,34 @@ main {
 
 .delete-btn:hover .trashcan-icon {
   fill: #ff4d4d;
+  color: var(--black-color);
+  /* You can change the hover color to a red tone */
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.edit-btn:hover {
+  opacity: 0.8;
+}
+
+.edit-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--light-color);
+  transition: fill 0.3s ease;
+}
+
+.edit-btn:hover .edit-icon {
+  fill: var(--bg-color);
   color: var(--black-color);
   /* You can change the hover color to a red tone */
 }

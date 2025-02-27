@@ -73,7 +73,15 @@
       </button>
     </div>
 
-    <h1 id="main-header"class="header text-light">My Todo List</h1>
+    <div class="edit-window-container d-none" id="edit-window-container">
+      <form id="edit-task-form" class="edit-task-form">
+        <h1 class="header text-light">Edit this task</h1>
+        <input type="text" id="edit-task-input" />
+        <button type="submit">Confirm</button>
+      </form>
+    </div>
+
+    <h1 id="main-header" class="header text-light">My Todo List</h1>
     <main>
       <div class="add-task-container">
         <form id="task-form" class="task-form">

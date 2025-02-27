@@ -7,6 +7,7 @@ interface ElectronAPI {
   minimizeWindow: () => void;
   maximizeWindow: () => void;
   closeWindow: () => void;
+  editTodo: (id: number, newTask: string) => void;
 }
 
 contextBridge.exposeInMainWorld('electron', {
@@ -14,6 +15,7 @@ contextBridge.exposeInMainWorld('electron', {
   addTodo: (task: string): Promise<void> => ipcRenderer.invoke('add-todo', task),
   deleteTodo: (id: number): Promise<void> => ipcRenderer.invoke('delete-todo', id),
   toggleTodo: (id: number): Promise<void> => ipcRenderer.invoke('toggle-todo', id),
+  editTodo: (id: number, newTask: string): Promise<void> => ipcRenderer.invoke('edit-todo', id, newTask),
   minimizeWindow: () => ipcRenderer.send('minimize-window'),
   maximizeWindow: () => ipcRenderer.send('maximize-window'),
   closeWindow: () => ipcRenderer.send('close-window'),

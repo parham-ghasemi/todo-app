@@ -15,7 +15,7 @@ const createWindow = () => {
   })
 
   // Load the index.html from the root directory
-  win.loadFile(path.join(__dirname,'..' ,'index.html'))
+  win.loadFile(path.join(__dirname, '..', 'index.html'))
     .catch(err => console.error('Error loading the app:', err));
 
   // Listen for window control requests from renderer process
@@ -75,11 +75,13 @@ const addTodo = async (task: string) => {
   const db = await dbPromise;
   await db.run('INSERT INTO todos (task, completed) VALUES (?, ?)', [task, false]);
 };
+
 const getTodos = async () => {
   const db = await dbPromise;
   const todos = await db.all('SELECT * FROM todos');
   return todos;
 };
+
 const toggleTodoCompletion = async (id: number) => {
   const db = await dbPromise;
   await db.run('UPDATE todos SET completed = NOT completed WHERE id = ?', [id]);
@@ -88,6 +90,11 @@ const toggleTodoCompletion = async (id: number) => {
 const deleteTodo = async (id: number) => {
   const db = await dbPromise;
   await db.run('DELETE FROM todos WHERE id = ?', [id]);
+};
+
+const editTodo = async (id: number, newTask: string) => {
+  const db = await dbPromise;
+  await db.run('UPDATE todos SET task = ? WHERE id = ?', [newTask, id]);
 };
 
 ipcMain.handle('get-todos', async () => {
@@ -105,3 +112,7 @@ ipcMain.handle('toggle-todo', async (_, id: number) => {
 ipcMain.handle('delete-todo', async (_, id: number) => {
   await deleteTodo(id);
 });
+
+ipcMain.handle('edit-todo', async (_, id: number, newTask: string) => {
+  await editTodo(id, newTask)
+})
