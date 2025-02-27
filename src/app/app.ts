@@ -140,6 +140,13 @@ inputForm?.addEventListener('submit', (event) => {
 
 const editTaskForm = document.getElementById('edit-task-form') as HTMLFormElement;
 const editTaskInput = document.getElementById('edit-task-input') as HTMLInputElement
+const editCloseBtn = document.getElementById('edit-close') as HTMLButtonElement;
+
+const handleClose = (e: MouseEvent) => {
+  e.preventDefault();
+  document.getElementById('edit-window-container')?.classList.add('d-none')
+}
+editCloseBtn.addEventListener('click', handleClose)
 
 const handleEditTask = () => {
   editTask(editTaskId, editTaskInput?.value);

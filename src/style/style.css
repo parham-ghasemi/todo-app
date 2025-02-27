@@ -116,6 +116,28 @@ main {
   justify-content: space-evenly;
 }
 
+.edit-task-form-header {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#edit-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
 .edit-task-form input {
   height: 50px;
   width: 100%;
@@ -130,12 +152,13 @@ main {
   outline: none;
   transition: all 0.3s ease;
 }
+
 .edit-task-form input:focus {
   border-color: var(--dark-color);
   box-shadow: 0 0 5px var(--dark-color);
 }
 
-.edit-task-form button {
+.edit-task-form>button {
   height: 50px;
   width: 50%;
   padding: 0 10px;
@@ -150,6 +173,7 @@ main {
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 .edit-task-form button:hover {
   border-color: var(--dark-color);
   box-shadow: 0 0 5px var(--dark-color);
@@ -233,8 +257,18 @@ main {
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding: 10px;
+  padding: 10px 15px 10px 10px;
   width: 100%;
+  border-radius: 10px;
+  transition: ease 200ms;
+}
+
+.tasks-list li:hover {
+  background-color: #cba25c28;
+}
+
+.tasks-list li:hover .task-buttons {
+  opacity: 1;
 }
 
 .task-content {
@@ -276,6 +310,8 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  opacity: 0;
+  transition: ease 200ms;
 }
 
 .delete-btn {
